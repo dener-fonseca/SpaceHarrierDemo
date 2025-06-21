@@ -22,7 +22,7 @@ class Menu:
             pygame.mixer.music.load('./assets/Menu.mp3')
             pygame.mixer.music.play(-1)
         except pygame.error:
-            pass  # Continue without music if audio is not available
+            pass  # O programa não para se o arquivo de som não for encontrado
         
         clock = pygame.time.Clock()
         

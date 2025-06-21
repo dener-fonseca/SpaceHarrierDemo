@@ -23,7 +23,7 @@ class Score:
             pygame.mixer.music.load('./assets/Score.mp3')
             pygame.mixer.music.play(-1)
         except pygame.error:
-            pass  # Continue without music if audio is not available
+            pass  # O programa não para se o arquivo de som não for encontrado
 
         db_proxy = DBProxy('DBScore')
         name = ''
