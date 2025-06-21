@@ -77,7 +77,11 @@ class Level:
 
                 if event.type == EVENT_ENEMY:
                     choice = random.choice(('Enemy1', 'Enemy2'))
-                    self.entity_list.append(EntityFactory.get_entity(choice))
+                    entity = EntityFactory.get_entity(choice)
+                    if isinstance(entity, list):
+                        self.entity_list.extend(entity)
+                    elif entity is not None:
+                        self.entity_list.append(entity)
 
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP
