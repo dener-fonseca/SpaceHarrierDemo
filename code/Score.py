@@ -19,8 +19,11 @@ class Score:
         self.score_pos = generate_score_pos(WIN_WIDTH, WIN_HEIGHT)
 
     def save(self, game_mode: str, player_score: list[int]):
-        pygame.mixer.music.load('./assets/Score.mp3')
-        pygame.mixer.music.play(-1)
+        try:
+            pygame.mixer.music.load('./assets/Score.mp3')
+            pygame.mixer.music.play(-1)
+        except pygame.error:
+            pass  # Continue without music if audio is not available
 
         db_proxy = DBProxy('DBScore')
         name = ''

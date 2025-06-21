@@ -11,10 +11,16 @@ from code.LevelEndScreen import LevelEndScreen
 class Game:
     def __init__(self):
         pygame.init()
-        # Inicializa o mixer
-        pygame.mixer.init()
-        # Carrega os sons
-        self.load_sounds()
+        # Inicializa o mixer com tratamento de erro
+        self.audio_enabled = True
+        try:
+            pygame.mixer.init()
+            # Carrega os sons
+            self.load_sounds()
+        except pygame.error:
+            print("Audio mixer initialization failed. Running without audio.")
+            self.audio_enabled = False
+            self.sounds = {}
         # Captura a resolução nativa da tela
         info = pygame.display.Info()
         Const.WIN_WIDTH = info.current_w
@@ -28,13 +34,16 @@ class Game:
         pygame.display.set_caption("Space Harrier")
         
     def load_sounds(self):
-        self.sounds = {
-            'move_option': pygame.mixer.Sound('./assets/MoveOption.mp3'),
-            'enter_option': pygame.mixer.Sound('./assets/EnterOption.mp3'),
-            'shot': pygame.mixer.Sound('./assets/Shot.mp3'),
-            'explosion': pygame.mixer.Sound('./assets/Explosion.mp3'),
-            'damage': pygame.mixer.Sound('./assets/Damage.mp3')
-        }
+        if self.audio_enabled:
+            self.sounds = {
+                'move_option': pygame.mixer.Sound('./assets/MoveOption.mp3'),
+                'enter_option': pygame.mixer.Sound('./assets/EnterOption.mp3'),
+                'shot': pygame.mixer.Sound('./assets/Shot.mp3'),
+                'explosion': pygame.mixer.Sound('./assets/Explosion.mp3'),
+                'damage': pygame.mixer.Sound('./assets/Damage.mp3')
+            }
+        else:
+            self.sounds = {}
 
     def run(self):
         while True:

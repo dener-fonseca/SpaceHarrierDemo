@@ -18,8 +18,11 @@ class Menu:
     
     def run(self):
         menu_option = 0
-        pygame.mixer.music.load('./assets/Menu.mp3')
-        pygame.mixer.music.play(-1)
+        try:
+            pygame.mixer.music.load('./assets/Menu.mp3')
+            pygame.mixer.music.play(-1)
+        except pygame.error:
+            pass  # Continue without music if audio is not available
         
         clock = pygame.time.Clock()
         
