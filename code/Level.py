@@ -22,7 +22,11 @@ class Level:
         self.game_mode = game_mode
         self.sounds = sounds
         self.entity_list: list[Entity] = []
-        self.entity_list.extend(EntityFactory.get_entity(self.name + 'Bg'))
+        bg_entities = EntityFactory.get_entity(self.name + 'Bg')
+        if isinstance(bg_entities, list):
+            self.entity_list.extend(bg_entities)
+        else:
+            self.entity_list.append(bg_entities)
         player = EntityFactory.get_entity('Player1')
         player.score = player_score[0]
         self.entity_list.append(player)
