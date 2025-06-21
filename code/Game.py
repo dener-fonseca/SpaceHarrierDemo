@@ -1,12 +1,13 @@
 # Módulo que controla o loop principal do jogo, os estados do menu, dos níveis e integra todos os componentes
 
-import sys
 import pygame
+import sys
 import code.Const as Const
 from code.Level import Level
+from code.LevelEndScreen import LevelEndScreen
 from code.Menu import Menu
 from code.Score import Score
-from code.LevelEndScreen import LevelEndScreen
+
 
 class Game:
     def __init__(self):
@@ -33,6 +34,7 @@ class Game:
         self.window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         pygame.display.set_caption("Space Harrier")
 
+    # Método para carregar os sons do jogo
     def load_sounds(self):
         if self.audio_enabled:
             self.sounds = {
@@ -51,6 +53,7 @@ class Game:
             'move': pygame.mixer.Sound('./assets/MoveOption.mp3')
         }
 
+    # Método que inicia o loop principal do jogo
     def run(self):
         while True:
             score = Score(self.window,self.sounds)

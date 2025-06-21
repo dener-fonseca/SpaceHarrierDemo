@@ -1,4 +1,4 @@
-# Módulo que decine o player com seus comportamentos como se mover e atirar
+# Módulo que define o player com seus comportamentos como se mover e atirar
 
 import pygame
 from code.Const import (ENTITY_SHOT_DELAY, ENTITY_SPEED, PLAYER_KEY_UP, PLAYER_KEY_DOWN, PLAYER_KEY_LEFT, PLAYER_KEY_RIGHT, PLAYER_KEY_SHOOT, WIN_HEIGHT, WIN_WIDTH)

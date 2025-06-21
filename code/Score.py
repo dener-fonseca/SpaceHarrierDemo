@@ -1,12 +1,12 @@
 # Módulo que controla e gerencia o sistema de pontuação dos players
 
-import sys
 import pygame
+import sys
+from code.Const import (COLOR_BLUE, COLOR_WHITE, MENU_OPTION, generate_score_pos, WIN_WIDTH, WIN_HEIGHT)
+from code.DBProxy import DBProxy
 from datetime import datetime
 from pygame import Surface, Rect, KEYDOWN, K_RETURN, K_BACKSPACE, K_ESCAPE
 from pygame.font import Font
-from code.Const import (COLOR_BLUE, COLOR_WHITE, MENU_OPTION, generate_score_pos, WIN_WIDTH, WIN_HEIGHT)
-from code.DBProxy import DBProxy
 
 
 class Score:

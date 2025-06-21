@@ -1,16 +1,15 @@
 # Módulo que gerencia as interações entre os objetos do jogo como as colisões
 
 from code.Const import WIN_WIDTH
-from code.Entity import Entity
 from code.Enemy import Enemy
+from code.EnemyShot import EnemyShot
+from code.Entity import Entity
+from code.Explosion import Explosion
 from code.Player import Player
 from code.PlayerShot import PlayerShot
-from code.EnemyShot import EnemyShot
-from code.Explosion import Explosion
-
 
 class EntityMediator:
-    # Verifica colisões entre entidades e com as bordas da janela
+    # Método estático que verifica colisões entre entidades e com as bordas da janela
     @staticmethod
     def verify_collision(entity_list: list[Entity], sounds):
         for i in range(len(entity_list)):
@@ -20,7 +19,7 @@ class EntityMediator:
                 entity2 = entity_list[j]
                 EntityMediator.__verify_collision_entity(entity1, entity2, sounds)
 
-    # Verifica se a entidade saiu da tela e marca para remoção se necessário
+    # Método estático que verifica se a entidade saiu da tela e marca para remoção se necessário
     @staticmethod
     def __verify_collision_window(ent: Entity):
         if isinstance(ent, Enemy):
@@ -33,7 +32,7 @@ class EntityMediator:
             if ent.rect.right <= 0:
                 ent.health = 0
 
-    # Verifica colisão entre duas entidades específicas e aplica dano
+    # Método estático que verifica colisão entre duas entidades específicas e aplica dano
     @staticmethod
     def __verify_collision_entity(ent1, ent2, sounds):
         valid_interaction = False
@@ -57,7 +56,7 @@ class EntityMediator:
                 ent2.last_dmg = ent1.name
                 sounds['damage'].play()
 
-    # Atribui pontuação ao jogador que causou o dano final no inimigo
+    # Método estático que atribui pontuação ao jogador que causou o dano final no inimigo
     @staticmethod
     def __give_score(enemy: Enemy, entity_list: list[Entity]):
         if enemy.last_dmg == 'Player1Shot':
@@ -69,7 +68,7 @@ class EntityMediator:
                 if ent.name == 'Player2':
                     ent.score += enemy.score
 
-    # Verifica a vida das entidades, remove as com vida zero e cria explosão
+    # Método estático que verifica a vida das entidades, remove as com vida zero e cria explosão
     @staticmethod
     def verify_health(entity_list: list[Entity], sounds):
         for ent in entity_list[:]:

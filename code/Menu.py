@@ -1,10 +1,10 @@
 # Módulo que gerencia a tela de menu inicial do jogo
 
-import sys
 import pygame.image
-from pygame import Surface, Rect
-from pygame.font import Font
+import sys
 from code.Const import (COLOR_BLUE, COLOR_GREY, COLOR_WHITE, MENU_OPTION)
+from pygame.font import Font
+from pygame import Surface, Rect
 
 
 class Menu:

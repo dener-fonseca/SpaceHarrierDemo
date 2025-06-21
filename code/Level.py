@@ -1,8 +1,8 @@
 # Módulo que define a estrutura das fases com carregamento de inimigos e background
 
+import pygame
 import random
 import sys
-import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 from code.Const import (COLOR_CYAN, COLOR_GREEN, COLOR_WHITE, EVENT_ENEMY, EVENT_TIMEOUT, MENU_OPTION, SPAWN_TIME, TIMEOUT_LEVEL, TIMEOUT_STEP, WIN_HEIGHT)
@@ -98,7 +98,7 @@ class Level:
             if not found_player:
                 return False
 
-            # Informações na tela (posição ajustada)
+            # Informações na tela contendo o nome do nivel, tempo e fps
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', COLOR_WHITE, (padding_left, top_margin + line_height))
             self.level_text(14, f'fps: {clock.get_fps():.0f}', COLOR_WHITE, (padding_left, WIN_HEIGHT - 35))
             self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE, (padding_left, WIN_HEIGHT - 20))

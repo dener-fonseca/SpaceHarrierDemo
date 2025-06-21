@@ -8,7 +8,7 @@ from code.Player import Player
 
 
 class EntityFactory:
-
+    # Método estático que retorna lista de entidades
     @staticmethod
     def get_entity(entity_name: str):
         match entity_name:

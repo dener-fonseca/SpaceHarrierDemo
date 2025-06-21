@@ -1,7 +1,7 @@
 # Módulo que trabalha como classe base genérica para todos os objetos do jogo
 
-from abc import ABC, abstractmethod
 import pygame.image
+from abc import ABC, abstractmethod
 from code.Const import ENTITY_HEALTH, ENTITY_DAMAGE, ENTITY_SCORE
 
 
