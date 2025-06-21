@@ -10,10 +10,11 @@ class Explosion(Entity):
         self.rect = self.image.get_rect(center=position)
         self.timer = 30
 
+    # Método que não deixa a explosão se mover
     def move(self):
-        # Exlosão não se move e desaparece após certo tempo
         pass
 
+    # Método que atualiza o tempo da explosão
     def update(self):
         self.timer -= 1
         if self.timer <= 0:

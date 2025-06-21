@@ -32,8 +32,8 @@ class Menu:
             self.window.blit(source=self.surf, dest=self.rect)
 
             # Criação do título do jogo
-            self.menu_text(50, "Space", COLOR_BLUE, (self.win_width / 2, 70))
-            self.menu_text(50, "Harrier", COLOR_BLUE, (self.win_width / 2, 120))
+            self.menu_text(50, "SPACE HARRIER", COLOR_BLUE, (self.win_width / 2, 70))
+            self.menu_text(50, "Demo", COLOR_GREY, (self.win_width / 2, 120))
 
             # Criação das opções do menu
             for i in range(len(MENU_OPTION)):

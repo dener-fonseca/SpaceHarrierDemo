@@ -2,12 +2,12 @@
 
 import pygame
 
-# W - WIN_HEIGHT e WIN_WIDTH foram colocados aqui para poderem ser usados pela função generate_score_pos
+# WIN_HEIGHT e WIN_WIDTH foram colocados aqui para poderem ser usados pela função generate_score_pos
 WIN_HEIGHT = 0
 
 WIN_WIDTH = 0
 
-# C
+# Cores utilizadas no jogo
 COLOR_BLUE = (0, 0, 255)
 
 COLOR_CYAN = (0, 128, 128)
@@ -19,7 +19,7 @@ COLOR_GREY = (128, 128, 128)
 COLOR_WHITE = (255, 255, 255)
 
 
-# E
+# Entidades do jogo
 ENTITY_DAMAGE = {
     'Level1Bg0': 0,
     'Level1Bg1': 0,
@@ -162,10 +162,11 @@ ENTITY_SPEED = {
     'Enemy3Shot': 4,
 }
 
+# Controle de eventos
 EVENT_TIMEOUT = pygame.USEREVENT + 2
 
 
-# M
+# Menu do jogo
 MENU_OPTION = ('COMEÇAR JOGO - 1 JOGADOR',
                'COMECAR JOGO - 2 JOGADORES COOPERATIVO',
                'COMECAR JOGO - 2 JOGADORES COMPETITIVO',
@@ -173,7 +174,7 @@ MENU_OPTION = ('COMEÇAR JOGO - 1 JOGADOR',
                'SAIR DO JOGO')
 
 
-# P
+# Comandos dos players
 PLAYER_KEY_UP = {'Player1': pygame.K_UP,
                  'Player2': pygame.K_w}
 
@@ -190,9 +191,10 @@ PLAYER_KEY_SHOOT = {'Player1': pygame.K_RCTRL,
                     'Player2': pygame.K_LCTRL}
 
 
-# S
+# Definição de posição para a pontuação
 SCORE_POS = {}
 
+# Função para gerar a posição da pontuação
 def generate_score_pos(win_width, win_height):
     return {
         'Title': (win_width / 2, 50),
@@ -212,11 +214,11 @@ def generate_score_pos(win_width, win_height):
         9: (win_width / 2, 290),
     }
 
-
+# Controle de spawn dos inimigos
 SPAWN_TIME = 4000
 
 
-# T
+# Controles de tempo
 TIMEOUT_LEVEL = 60000
 
 TIMEOUT_STEP = 100

@@ -2,7 +2,7 @@
 
 import sys
 import pygame
-from code import Const
+import code.Const as Const
 from code.Level import Level
 from code.Menu import Menu
 from code.Score import Score
@@ -15,10 +15,10 @@ class Game:
         self.audio_enabled = True
         try:
             pygame.mixer.init()
-            # Carrega os sons
+            # Carrega os sons após a inicialização bem-sucedida do mixer
             self.load_sounds()
         except pygame.error:
-            print("Audio mixer initialization failed. Running without audio.")
+            print("Áudio não está disponível.")
             self.audio_enabled = False
             self.sounds = {}
         # Captura a resolução nativa da tela
@@ -58,7 +58,7 @@ class Game:
                     level = Level(self.window, f'Level{level_number}', menu_return, player_score, self.sounds)
                     level_result = level.run(player_score)
                     
-                    # Se perdeu (single ou ambos no multiplayer)
+                    # Aparece tela de fim de nivel e verifica se o player venceu ou perdeu
                     if not level_result:
                         end_screen = LevelEndScreen(
                             screen=self.window,
@@ -91,7 +91,7 @@ class Game:
                     )
                     end_screen.show()
                     
-                # Após fim do jogo (vitória ou derrota)
+                # Tela de pontuação aparece após o fim do jogo
                 score.save(menu_return, player_score)
                 
 

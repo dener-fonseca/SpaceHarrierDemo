@@ -5,7 +5,6 @@ import sys
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-
 from code.Const import (COLOR_CYAN, COLOR_GREEN, COLOR_WHITE, EVENT_ENEMY, EVENT_TIMEOUT, MENU_OPTION, SPAWN_TIME, TIMEOUT_LEVEL, TIMEOUT_STEP, WIN_HEIGHT)
 from code.Enemy import Enemy
 from code.Entity import Entity
