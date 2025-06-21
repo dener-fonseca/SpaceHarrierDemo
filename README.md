@@ -9,7 +9,7 @@ O objetivo do projeto foi criar uma demo jogável utilizando a linguagem Python,
 
 🎮 Sobre o Jogo
 
-Esta demo é inspirada no projeto Mountain Shooter, do professor Vinicius Borin, e apresenta um estilo shoot 'em up com progressão por níveis.
+Esta demo é inspirada no projeto Mountain Shooter, do professor Vinicius Borin, que foi feita durante as 8 aulas praticas da disciplina Linguagem de Programação e apresenta um estilo shoot'em up de rolagem lateral estilo Gladius com progressão por níveis.
 
 ✅ Mecânicas:
 
@@ -31,7 +31,6 @@ Dois jogadores cooperativo
 Dois jogadores competitivo
 
 
-
 ---
 
 🧱 Tecnologias Utilizadas
@@ -45,8 +44,6 @@ pygame (lógica e renderização do jogo)
 sqlite3 (armazenamento de pontuação)
 
 random, datetime, sys, abc
-
-
 
 
 ---
@@ -64,7 +61,6 @@ Fundos dos níveis com efeito parallax
 Imagens para o menu principal, pontuação, tela de transição de níveis e game over
 
 
-
 Áudio e Música
 
 Pixabay.com:
@@ -80,9 +76,6 @@ Dano
 Explosões
 
 Navegação e confirmação no menu
-
-
-
 
 
 ---

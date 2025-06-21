@@ -4,7 +4,7 @@ import sys
 import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Const import (C_BLUE, C_GREY, C_WHITE, MENU_OPTION, WIN_WIDTH)
+from code.Const import (COLOR_BLUE, COLOR_GREY, COLOR_WHITE, MENU_OPTION)
 
 
 class Menu:
@@ -13,6 +13,8 @@ class Menu:
         self.sounds = sounds
         self.surf = pygame.image.load('./assets/MenuBg.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
+        # Pega largura e altura reais da janela
+        self.win_width, self.win_height = self.window.get_size()
     
     def run(self):
         menu_option = 0
@@ -27,15 +29,15 @@ class Menu:
             self.window.blit(source=self.surf, dest=self.rect)
 
             # Criação do título do jogo
-            self.menu_text(50, "Space", C_BLUE, ((WIN_WIDTH / 2), 70))
-            self.menu_text(50, "Harrier", C_BLUE, ((WIN_WIDTH / 2), 120))
+            self.menu_text(50, "Space", COLOR_BLUE, (self.win_width / 2, 70))
+            self.menu_text(50, "Harrier", COLOR_BLUE, (self.win_width / 2, 120))
 
             # Criação das opções do menu
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_text(20, MENU_OPTION[i], C_GREY, ((WIN_WIDTH / 2), 200 + 25 * i))
+                    self.menu_text(20, MENU_OPTION[i], COLOR_GREY, (self.win_width / 2, 200 + 25 * i))
                 else:
-                    self.menu_text(20, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
+                    self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, (self.win_width / 2, 200 + 25 * i))
             
             pygame.display.flip()
 

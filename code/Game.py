@@ -20,6 +20,9 @@ class Game:
         Const.WIN_WIDTH = info.current_w
         Const.WIN_HEIGHT = info.current_h
 
+        # Atualiza SCORE_POS com a resolução detectada
+        Const.SCORE_POS = Const.generate_score_pos(Const.WIN_WIDTH, Const.WIN_HEIGHT)
+
         # Cria a janela em modo tela cheia com resolução nativa
         self.window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         pygame.display.set_caption("Space Harrier")

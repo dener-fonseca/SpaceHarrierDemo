@@ -6,7 +6,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.Const import (C_CYAN, C_GREEN, C_WHITE, EVENT_ENEMY, EVENT_TIMEOUT, MENU_OPTION, SPAWN_TIME, TIMEOUT_LEVEL, TIMEOUT_STEP, WIN_HEIGHT)
+from code.Const import (COLOR_CYAN, COLOR_GREEN, COLOR_WHITE, EVENT_ENEMY, EVENT_TIMEOUT, MENU_OPTION, SPAWN_TIME, TIMEOUT_LEVEL, TIMEOUT_STEP, WIN_HEIGHT)
 from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
@@ -35,10 +35,15 @@ class Level:
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
     def run(self, player_score: list[int]):
-        pygame.mixer_music.load(f'./assets/{self.name}.mp3')
+        pygame.mixer.music.load(f'./assets/{self.name}.mp3')
         pygame.mixer_music.set_volume(0.3)
         pygame.mixer_music.play(-1)
         clock = pygame.time.Clock()
+        
+        padding_left = 10
+        top_margin = 5
+        line_height = 20
+        
         while True:
             clock.tick(60)
             for ent in self.entity_list:
@@ -55,10 +60,10 @@ class Level:
                         self.entity_list.append(shoot)
 
                 if ent.name == 'Player1':
-                    self.level_text(14, f'Player1 - Health: {ent.health} | Score: {ent.score}', C_GREEN, (10, 25))
+                    self.level_text(14, f'Player1 - Health: {ent.health} | Score: {ent.score}', COLOR_GREEN, (padding_left, top_margin + line_height * 2))
 
                 if ent.name == 'Player2':
-                    self.level_text(14, f'Player2 - Health: {ent.health} | Score: {ent.score}', C_CYAN, (10, 45))
+                    self.level_text(14, f'Player2 - Health: {ent.health} | Score: {ent.score}', COLOR_CYAN, (padding_left, top_margin + line_height * 3))
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -84,10 +89,10 @@ class Level:
             if not found_player:
                 return False
 
-            # Informações na tela
-            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_WHITE, (10, 5))
-            self.level_text(14, f'fps: {clock.get_fps():.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
-            self.level_text(14, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT - 20))
+            # Informações na tela (posição ajustada)
+            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', COLOR_WHITE, (padding_left, top_margin + line_height))
+            self.level_text(14, f'fps: {clock.get_fps():.0f}', COLOR_WHITE, (padding_left, WIN_HEIGHT - 35))
+            self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE, (padding_left, WIN_HEIGHT - 20))
             pygame.display.flip()
 
             # Verificações de colisão e vida

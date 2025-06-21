@@ -16,8 +16,11 @@ class LevelEndScreen:
 
     def load_background(self):
         try:
-            return pygame.image.load(f"assets/Level{self.level_number}Background.png").convert()
-        except:
+            bg = pygame.image.load(f"assets/Level{self.level_number}Background.png").convert()
+            # Redimensiona para cobrir toda a tela
+            bg = pygame.transform.scale(bg, (self.screen.get_width(), self.screen.get_height()))
+            return bg
+        except pygame.error:
             print(f"Imagem de fundo da fase {self.level_number} não encontrada.")
             return None
 

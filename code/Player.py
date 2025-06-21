@@ -1,5 +1,6 @@
 # Módulo que decine o player com seus comportamentos como se mover e atirar
 
+import pygame
 from code.Const import (ENTITY_SHOT_DELAY, ENTITY_SPEED, PLAYER_KEY_UP, PLAYER_KEY_DOWN, PLAYER_KEY_LEFT, PLAYER_KEY_RIGHT, PLAYER_KEY_SHOOT, WIN_HEIGHT, WIN_WIDTH)
 from code.Entity import Entity
 from code.PlayerShot import PlayerShot
@@ -22,7 +23,6 @@ class Player(Entity):
             self.rect.centerx -= ENTITY_SPEED[self.name]
         if pressed_key[PLAYER_KEY_RIGHT[self.name]] and self.rect.right < WIN_WIDTH:
             self.rect.centerx += ENTITY_SPEED[self.name]
-        pass
 
     # Método para o player atirar
     def shoot(self):

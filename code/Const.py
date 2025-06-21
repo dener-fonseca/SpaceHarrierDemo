@@ -2,21 +2,21 @@
 
 import pygame
 
-# W
+# W - WIN_HEIGHT e WIN_WIDTH foram colocados aqui para poderem ser usados pela função generate_score_pos
 WIN_HEIGHT = 0
 
 WIN_WIDTH = 0
 
 # C
-C_BLUE = (0, 0, 255)
+COLOR_BLUE = (0, 0, 255)
 
-C_CYAN = (0, 128, 128)
+COLOR_CYAN = (0, 128, 128)
 
-C_GREEN = (0, 128, 0)
+COLOR_GREEN = (0, 128, 0)
 
-C_GREY = (128, 128, 128)
+COLOR_GREY = (128, 128, 128)
 
-C_WHITE = (255, 255, 255)
+COLOR_WHITE = (255, 255, 255)
 
 
 # E
@@ -191,22 +191,27 @@ PLAYER_KEY_SHOOT = {'Player1': pygame.K_RCTRL,
 
 
 # S
-SCORE_POS = {'Title': (WIN_WIDTH / 2, 50),
-             'EnterName': (WIN_WIDTH / 2, 80),
-             'Error': (400, 300),
-             'Label': (WIN_WIDTH / 2, 90),
-             'Name': (WIN_WIDTH / 2, 110),
-             0: (WIN_WIDTH / 2, 110),
-             1: (WIN_WIDTH / 2, 130),
-             2: (WIN_WIDTH / 2, 150),
-             3: (WIN_WIDTH / 2, 170),
-             4: (WIN_WIDTH / 2, 190),
-             5: (WIN_WIDTH / 2, 210),
-             6: (WIN_WIDTH / 2, 230),
-             7: (WIN_WIDTH / 2, 250),
-             8: (WIN_WIDTH / 2, 270),
-             9: (WIN_WIDTH / 2, 290),
-             }
+SCORE_POS = {}
+
+def generate_score_pos(win_width, win_height):
+    return {
+        'Title': (win_width / 2, 50),
+        'EnterName': (win_width / 2, 80),
+        'Error': (win_width / 2, win_height / 2),
+        'Label': (win_width / 2, 90),
+        'Name': (win_width / 2, 110),
+        0: (win_width / 2, 110),
+        1: (win_width / 2, 130),
+        2: (win_width / 2, 150),
+        3: (win_width / 2, 170),
+        4: (win_width / 2, 190),
+        5: (win_width / 2, 210),
+        6: (win_width / 2, 230),
+        7: (win_width / 2, 250),
+        8: (win_width / 2, 270),
+        9: (win_width / 2, 290),
+    }
+
 
 SPAWN_TIME = 4000
 
