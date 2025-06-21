@@ -10,6 +10,10 @@ class Explosion(Entity):
         self.rect = self.image.get_rect(center=position)
         self.timer = 30
 
+    def move(self):
+        # Explosions don't move, they just stay in place
+        pass
+
     def update(self):
         self.timer -= 1
         if self.timer <= 0:
