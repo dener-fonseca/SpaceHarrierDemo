@@ -6,7 +6,13 @@ from code.EnemyShot import EnemyShot
 from code.Entity import Entity
 from code.Player import Player
 from code.PlayerShot import PlayerShot
+from code.Explosion import Explosiofrom code.Entity import Entity
+from code.Enemy import Enemy
+from code.Player import Player
+from code.PlayerShot import PlayerShot
+from code.EnemyShot import EnemyShot
 from code.Explosion import Explosion
+from code.Const import WIN_WIDTH
 
 
 class EntityMediator:
@@ -31,7 +37,7 @@ class EntityMediator:
                 ent.health = 0
         if isinstance(ent, EnemyShot):
             if ent.rect.right <= 0:
-                ent.health = 0
+                ent.health = 0alth = 0
 
     # Verifica colisão entre duas entidades específicas e aplica dano
     @staticmethod
@@ -55,7 +61,7 @@ class EntityMediator:
                 ent2.health -= ent1.damage
                 ent1.last_dmg = ent2.name
                 ent2.last_dmg = ent1.name
-                sounds['damage'].play()
+                sounds['damage'].play()e'].play()
 
     # Atribui pontuação ao jogador que causou o dano final no inimigo
     @staticmethod
@@ -80,4 +86,4 @@ class EntityMediator:
                 explosion = Explosion(f'Explosion{ent.name}', ent.rect.center)
                 entity_list.append(explosion)
                 entity_list.remove(ent)
-                sounds['explosion'].play()
+                sounds['explosion'].play()explosion'].play()
