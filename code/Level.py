@@ -25,7 +25,7 @@ class Level:
         bg_entities = EntityFactory.get_entity(self.name + 'Bg')
         if isinstance(bg_entities, list):
             self.entity_list.extend(bg_entities)
-        else:
+        elif bg_entities is not None:
             self.entity_list.append(bg_entities)
         player = EntityFactory.get_entity('Player1')
         player.score = player_score[0]
