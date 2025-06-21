@@ -11,7 +11,7 @@ class Explosion(Entity):
         self.timer = 30
 
     def move(self):
-        # Explosions don't move, they just stay in place
+        # Exlosão não se move e desaparece após certo tempo
         pass
 
     def update(self):
