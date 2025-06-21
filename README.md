@@ -1,6 +1,6 @@
 🚀 Space Harrier Demo
 
-Space Harrier é um jogo 2D desenvolvido como projeto acadêmico para a disciplina Linguagem de Programação do curso da Universidade Uninter - Centro Universitário Internacional.
+Space Harrier é um jogo 2D desenvolvido como projeto acadêmico para a disciplina Linguagem de Programação para a Universidade Uninter - Centro Universitário Internacional.
 
 O objetivo do projeto foi criar uma demo jogável utilizando a linguagem Python, aplicando os conceitos aprendidos durante a disciplina.
 
@@ -9,7 +9,7 @@ O objetivo do projeto foi criar uma demo jogável utilizando a linguagem Python,
 
 🎮 Sobre o Jogo
 
-Esta demo é inspirada no projeto Mountain Shooter, do professor Vinicius Borin, que foi feita durante as 8 aulas praticas da disciplina Linguagem de Programação e apresenta um estilo shoot'em up de rolagem lateral estilo Gladius com progressão por níveis.
+Esta demo é inspirada no projeto Mountain Shooter, do professor Vinicius Borin, que foi feita durante as 8 aulas práticas da disciplina Linguagem de Programação e apresenta um estilo shoot'em up de rolagem lateral estilo Gladius com progressão por níveis.
 
 ✅ Mecânicas:
 
