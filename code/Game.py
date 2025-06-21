@@ -46,12 +46,12 @@ class Game:
             }
         else:
             self.sounds = {
-            'damage': pygame.mixer.Sound('./assets/Damage.mp3'),
-            'explosion': pygame.mixer.Sound('./assets/Explosion.mp3'),
-            'shot': pygame.mixer.Sound('./assets/Shot.mp3'),
-            'enter': pygame.mixer.Sound('./assets/EnterOption.mp3'),
-            'move': pygame.mixer.Sound('./assets/MoveOption.mp3')
-        }
+                'damage': pygame.mixer.Sound('./assets/Damage.mp3'),
+                'explosion': pygame.mixer.Sound('./assets/Explosion.mp3'),
+                'shot': pygame.mixer.Sound('./assets/Shot.mp3'),
+                'enter_option': pygame.mixer.Sound('./assets/EnterOption.mp3'),
+                'move_option': pygame.mixer.Sound('./assets/MoveOption.mp3')
+            }
 
     # Método que inicia o loop principal do jogo
     def run(self):
