@@ -21,6 +21,7 @@ class Score:
     def save(self, game_mode: str, player_score: list[int]):
         try:
             pygame.mixer.music.load('./assets/Score.mp3')
+            pygame.mixer.music.set_volume(0.3)
             pygame.mixer.music.play(-1)
         except pygame.error:
             pass  # O programa não para se o arquivo de som não for encontrado

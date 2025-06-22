@@ -27,7 +27,8 @@ class LevelEndScreen:
     def show(self):
         # Código que toca a música da tela de fim de fase
         try:
-            pygame.mixer.music.load("assets/LevelEndScreen.mp3")
+            pygame.mixer.music.load("assets/LevelEndScreen.mp3") # Código para carregar a música de fim de fase
+            pygame.mixer.music.set_volume(0.3) # Código para definir o volume da música
             pygame.mixer.music.play(-1)  # Código para repetir a música indefinidamente enquanto a tela estiver ativa
         except pygame.error as e:
             print(f"Erro ao carregar a música de fim de fase: {e}")
