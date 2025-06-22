@@ -6,7 +6,7 @@ from code.EnemyShot import EnemyShot
 from code.Entity import Entity
 from code.Explosion import Explosion
 from code.Player import Player
-from code.PlayerShot import PlayerShotShot
+from code.PlayerShot import PlayerShot
 
 class EntityMediator:
     # Método estático que verifica colisões entre entidades e com as bordas da janela
@@ -30,7 +30,7 @@ class EntityMediator:
                 ent.health = 0
         if isinstance(ent, EnemyShot):
             if ent.rect.right <= 0:
-                ent.health = 0t.health = 0
+                ent.health = 0
 
     # Método estático que verifica colisão entre duas entidades específicas e aplica dano
     @staticmethod
@@ -54,7 +54,7 @@ class EntityMediator:
                 ent2.health -= ent1.damage
                 ent1.last_dmg = ent2.name
                 ent2.last_dmg = ent1.name
-                sounds['damage'].play()'damage'].play()
+                sounds['damage'].play()
 
     # Método estático que atribui pontuação ao jogador que causou o dano final no inimigo
     @staticmethod

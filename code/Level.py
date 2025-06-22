@@ -11,7 +11,7 @@ from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
 from code.Player import Player
-from code.Explosion import Explosionn
+from code.Explosion import Explosion
 
 
 class Level:
@@ -37,7 +37,7 @@ class Level:
                 player.score = player_score[1]
                 self.entity_list.append(player)
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
-        pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP))
+        pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
     def run(self, player_score: list[int]):
         pygame.mixer.music.load(f'./assets/{self.name}.mp3')
