@@ -59,4 +59,3 @@ class EntityFactory:
                 safe_y = random.randint(margin_top, WIN_HEIGHT - margin_bottom)
                 spawn_x = WIN_WIDTH + 50  # Spawn mais distante da borda para suavizar entrada
                 return Enemy(entity_name, (spawn_x, safe_y))
-`
