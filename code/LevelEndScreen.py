@@ -2,7 +2,7 @@
 
 import pygame
 import sys
-from code.Const import COLOR_WHITE, WIN_WIDTH, WIN_HEIGHTme
+from code.Const import COLOR_WHITE, WIN_WIDTH, WIN_HEIGHT
 
 class LevelEndScreen:
     def __init__(self, screen, font, level_number, success=True, max_level=3):
@@ -74,9 +74,9 @@ class LevelEndScreen:
             self.screen.blit(subtitle_surface, subtitle_rect)
             self.screen.blit(continue_surface, continue_rect)
             
-            pygame.display.flip() None
+            pygame.display.flip()
 
-    def show(self):
+    def show_old(self):
         # Código que toca a música da tela de fim de fase
         try:
             pygame.mixer.music.load("assets/LevelEndScreen.mp3") # Código para carregar a música de fim de fase
