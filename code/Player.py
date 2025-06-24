@@ -15,14 +15,19 @@ class Player(Entity):
     # Método para o player se mover
     def move(self):
         pressed_key = pygame.key.get_pressed()
-        if pressed_key[PLAYER_KEY_UP[self.name]] and self.rect.top > 0:
+        # Movimento vertical com margens de segurança
+        if pressed_key[PLAYER_KEY_UP[self.name]] and self.rect.top > 10:
             self.rect.centery -= ENTITY_SPEED[self.name]
-        if pressed_key[PLAYER_KEY_DOWN[self.name]] and self.rect.bottom < WIN_HEIGHT:
+        if pressed_key[PLAYER_KEY_DOWN[self.name]] and self.rect.bottom < WIN_HEIGHT - 10:
             self.rect.centery += ENTITY_SPEED[self.name]
-        if pressed_key[PLAYER_KEY_LEFT[self.name]] and self.rect.left > 0:
+        # Movimento horizontal com margens de segurança
+        if pressed_key[PLAYER_KEY_LEFT[self.name]] and self.rect.left > 10:
             self.rect.centerx -= ENTITY_SPEED[self.name]
-        if pressed_key[PLAYER_KEY_RIGHT[self.name]] and self.rect.right < WIN_WIDTH:
+        if pressed_key[PLAYER_KEY_RIGHT[self.name]] and self.rect.right < WIN_WIDTH - 10:
             self.rect.centerx += ENTITY_SPEED[self.name]
+        
+        # Garante que o player não saia da tela mesmo com variações de tamanho
+        self.rect.clamp_ip(pygame.Rect(0, 0, WIN_WIDTH, WIN_HEIGHT))
 
     # Método para o player atirar
     def shoot(self):

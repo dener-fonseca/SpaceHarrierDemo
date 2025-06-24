@@ -44,11 +44,11 @@ class Level:
         pygame.mixer.music.set_volume(0.3)
         pygame.mixer.music.play(-1)
         clock = pygame.time.Clock()
-        
+
         padding_left = 10
         top_margin = 5
         line_height = 20
-        
+
         while True:
             clock.tick(60)
             for ent in self.entity_list:
@@ -108,8 +108,18 @@ class Level:
             EntityMediator.verify_collision(entity_list=self.entity_list, sounds=self.sounds)
             EntityMediator.verify_health(entity_list=self.entity_list, sounds=self.sounds)
 
-    def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
-        text_font: Font = pygame.font.SysFont(name="DM Serif Display", size=text_size)
-        text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
-        text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
-        self.window.blit(source=text_surf, dest=text_rect)
+    def level_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
+        try:
+            font = pygame.font.SysFont(name="Arial", size=text_size)
+            text_surface = font.render(text, True, text_color)
+            text_rect = text_surface.get_rect(topleft=text_center_pos)
+
+            # Garante que o texto não saia da tela
+            if text_rect.right > WIN_WIDTH:
+                text_rect.right = WIN_WIDTH - 5
+            if text_rect.bottom > WIN_HEIGHT:
+                text_rect.bottom = WIN_HEIGHT - 5
+
+            self.window.blit(source=text_surface, dest=text_rect)
+        except pygame.error as e:
+            print(f"Erro ao renderizar texto: {e}")

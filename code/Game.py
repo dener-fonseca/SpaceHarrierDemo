@@ -35,22 +35,23 @@ class Game:
 
     # Método para carregar os sons do jogo
     def load_sounds(self):
+        sound_files = ['MoveOption.mp3', 'EnterOption.mp3', 'Shot.mp3', 'Explosion.mp3', 'Damage.mp3']
+        sound_names = ['move_option', 'enter_option', 'shot', 'explosion', 'damage']
+        
+        self.sounds = {}
+        
         if self.audio_enabled:
-            self.sounds = {
-                'move_option': pygame.mixer.Sound('./assets/MoveOption.mp3'),
-                'enter_option': pygame.mixer.Sound('./assets/EnterOption.mp3'),
-                'shot': pygame.mixer.Sound('./assets/Shot.mp3'),
-                'explosion': pygame.mixer.Sound('./assets/Explosion.mp3'),
-                'damage': pygame.mixer.Sound('./assets/Damage.mp3')
-            }
+            for name, file in zip(sound_names, sound_files):
+                try:
+                    self.sounds[name] = pygame.mixer.Sound(f'./assets/{file}')
+                except pygame.error as e:
+                    print(f"Erro ao carregar som {file}: {e}")
+                    # Som vazio como fallback
+                    self.sounds[name] = None
         else:
-            self.sounds = {
-                'damage': pygame.mixer.Sound('./assets/Damage.mp3'),
-                'explosion': pygame.mixer.Sound('./assets/Explosion.mp3'),
-                'shot': pygame.mixer.Sound('./assets/Shot.mp3'),
-                'enter_option': pygame.mixer.Sound('./assets/EnterOption.mp3'),
-                'move_option': pygame.mixer.Sound('./assets/MoveOption.mp3')
-            }
+            # Sons vazios quando áudio não está disponível
+            for name in sound_names:
+                self.sounds[name] = None
 
     # Método que inicia o loop principal do jogo
     def run(self):

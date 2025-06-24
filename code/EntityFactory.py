@@ -51,11 +51,8 @@ class EntityFactory:
             case 'Player2':
                 return Player('Player2', (10, WIN_HEIGHT / 2 + 30))
 
-            case 'Enemy1':
-                return Enemy('Enemy1', (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
-
-            case 'Enemy2':
-                return Enemy('Enemy2', (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
-
-            case 'Enemy3':
-                return Enemy('Enemy3', (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
+            case 'Enemy1' | 'Enemy2' | 'Enemy3':
+                # Garante que inimigos apareçam dentro dos limites seguros da tela
+                safe_y = random.randint(50, WIN_HEIGHT - 100)
+                return Enemy(entity_name, (WIN_WIDTH + 10, safe_y))
+`
