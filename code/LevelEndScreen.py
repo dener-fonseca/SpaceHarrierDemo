@@ -1,6 +1,8 @@
 # Módulo que mostra se você passou os niveis 1 e 2, mostra que concluiu a demo ou mostra game over caso o player perca em uma das fases
 
 import pygame
+import sys
+from code.Const import COLOR_WHITE, WIN_WIDTH, WIN_HEIGHTme
 
 class LevelEndScreen:
     def __init__(self, screen, font, level_number, success=True, max_level=3):
@@ -23,6 +25,56 @@ class LevelEndScreen:
         except pygame.error:
             print(f"Imagem de fundo da fase {self.level_number} não encontrada.")
             return None
+
+    def show(self):
+        clock = pygame.time.Clock()
+        
+        while not self.finished:
+            clock.tick(60)
+            
+            # Eventos
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
+                        self.finished = True
+            
+            # Desenha o fundo
+            if self.background:
+                self.screen.blit(self.background, (0, 0))
+            else:
+                self.screen.fill((0, 0, 0))  # Fundo preto se não conseguir carregar
+            
+            # Determina a mensagem baseada no sucesso e nível
+            if self.success:
+                if self.level_number == self.max_level:
+                    title = "PARABÉNS! DEMO CONCLUÍDA!"
+                    subtitle = "Você completou todos os níveis!"
+                else:
+                    title = f"NÍVEL {self.level_number} CONCLUÍDO!"
+                    subtitle = f"Preparando para o Nível {self.level_number + 1}..."
+            else:
+                title = "GAME OVER"
+                subtitle = "Você foi derrotado!"
+            
+            # Renderiza o texto
+            title_surface = self.font.render(title, True, COLOR_WHITE)
+            subtitle_surface = self.font.render(subtitle, True, COLOR_WHITE)
+            continue_surface = self.font.render("Pressione ENTER para continuar", True, COLOR_WHITE)
+            
+            # Centraliza o texto
+            title_rect = title_surface.get_rect(center=(WIN_WIDTH // 2, WIN_HEIGHT // 2 - 50))
+            subtitle_rect = subtitle_surface.get_rect(center=(WIN_WIDTH // 2, WIN_HEIGHT // 2))
+            continue_rect = continue_surface.get_rect(center=(WIN_WIDTH // 2, WIN_HEIGHT // 2 + 100))
+            
+            # Desenha o texto
+            self.screen.blit(title_surface, title_rect)
+            self.screen.blit(subtitle_surface, subtitle_rect)
+            self.screen.blit(continue_surface, continue_rect)
+            
+            pygame.display.flip() None
 
     def show(self):
         # Código que toca a música da tela de fim de fase
