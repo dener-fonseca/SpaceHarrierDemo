@@ -18,4 +18,4 @@ class Explosion(Entity):
     def update(self):
         self.timer -= 1
         if self.timer <= 0:
-            self.health = 0ealth = 0
+            self.health = 0
