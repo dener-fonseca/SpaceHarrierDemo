@@ -51,7 +51,30 @@ class Level:
 
         while True:
             clock.tick(60)
+            
+            # Separar entidades por tipo para renderização em camadas
+            backgrounds = []
+            players = []
+            enemies = []
+            shots = []
+            explosions = []
+            
             for ent in self.entity_list:
+                if 'Bg' in ent.name:
+                    backgrounds.append(ent)
+                elif isinstance(ent, Player):
+                    players.append(ent)
+                elif isinstance(ent, Enemy):
+                    enemies.append(ent)
+                elif 'Shot' in ent.name:
+                    shots.append(ent)
+                elif isinstance(ent, Explosion):
+                    explosions.append(ent)
+            
+            # Renderizar em ordem: background -> enemies -> shots -> players -> explosions
+            all_entities_ordered = backgrounds + enemies + shots + players + explosions
+            
+            for ent in all_entities_ordered:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
 

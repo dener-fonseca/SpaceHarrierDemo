@@ -53,6 +53,10 @@ class EntityFactory:
 
             case 'Enemy1' | 'Enemy2' | 'Enemy3':
                 # Garante que inimigos apareçam dentro dos limites seguros da tela
-                safe_y = random.randint(50, WIN_HEIGHT - 100)
-                return Enemy(entity_name, (WIN_WIDTH + 10, safe_y))
+                # Considera o tamanho típico dos sprites de inimigos (aproximadamente 64x64)
+                margin_top = 80
+                margin_bottom = 80
+                safe_y = random.randint(margin_top, WIN_HEIGHT - margin_bottom)
+                spawn_x = WIN_WIDTH + 50  # Spawn mais distante da borda para suavizar entrada
+                return Enemy(entity_name, (spawn_x, safe_y))
 `
