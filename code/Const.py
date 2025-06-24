@@ -3,9 +3,9 @@
 import pygame
 
 # WIN_HEIGHT e WIN_WIDTH foram colocados aqui para poderem ser usados pela função generate_score_pos
-WIN_HEIGHT = 0
+WIN_HEIGHT = 768
 
-WIN_WIDTH = 0
+WIN_WIDTH = 1024
 
 # Cores utilizadas no jogo
 COLOR_BLUE = (0, 0, 255)

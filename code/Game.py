@@ -22,16 +22,15 @@ class Game:
             print("Áudio não está disponível.")
             self.audio_enabled = False
             self.sounds = {}
-        # Captura a resolução nativa da tela
-        info = pygame.display.Info()
-        Const.WIN_WIDTH = info.current_w
-        Const.WIN_HEIGHT = info.current_h
+        # Define resolução fixa para evitar problemas de escala
+        Const.WIN_WIDTH = 1024
+        Const.WIN_HEIGHT = 768
 
-        # Atualiza SCORE_POS com a resolução detectada
+        # Atualiza SCORE_POS com a resolução definida
         Const.SCORE_POS = Const.generate_score_pos(Const.WIN_WIDTH, Const.WIN_HEIGHT)
 
-        # Cria a janela em modo tela cheia com resolução nativa
-        self.window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        # Cria a janela com resolução fixa
+        self.window = pygame.display.set_mode((Const.WIN_WIDTH, Const.WIN_HEIGHT))
         pygame.display.set_caption("Space Harrier")
 
     # Método para carregar os sons do jogo

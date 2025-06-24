@@ -11,4 +11,4 @@ class PlayerShot(Entity):
 
     # Método que faz o tiro do player se mover
     def move(self):
-        self.rect.centerx += ENTITY_SPEED[self.name]
+        self.rect.centerx += ENTITY_SPEED[self.name]f.name]
