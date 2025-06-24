@@ -13,5 +13,5 @@ class Background(Entity):
     def move(self):
         self.rect.centerx -= ENTITY_SPEED[self.name]
         if self.rect.right <= 0:
-            # Posiciona o background logo após o último pixel visível para evitar gaps
-            self.rect.left = 0
+            # Reposiciona o background para a direita da tela para continuar o loop
+            self.rect.left = self.rect.width
