@@ -12,6 +12,8 @@ class Menu:
         self.window = window
         self.sounds = sounds
         self.surf = pygame.image.load('./assets/MenuBg.png').convert_alpha()
+        # Redimensiona o fundo para cobrir toda a tela
+        self.surf = pygame.transform.scale(self.surf, self.window.get_size())
         self.rect = self.surf.get_rect(left=0, top=0)
         # Pega largura e altura reais da janela
         self.win_width, self.win_height = self.window.get_size()
