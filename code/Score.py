@@ -4,7 +4,7 @@ import sys
 import pygame
 from datetime import datetime
 from pygame.font import Font
-from pygame import (Surface, Rect, KEYDOWN, K_RETURN, K_BACKSPACE, K_ESCAPE)
+from pygame import Surface, Rect, KEYDOWN, K_RETURN, K_BACKSPACE, K_ESCAPE
 from code.Const import (COLOR_YELLOW, SCORE_POS, MENU_OPTION, COLOR_WHITE, WIN_WIDTH, WIN_HEIGHT)
 from code.DBProxy import DBProxy
 
