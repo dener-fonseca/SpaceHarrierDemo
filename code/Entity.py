@@ -13,7 +13,7 @@ class Entity(ABC):
         if 'Bg' in name:
             self.surf = pygame.transform.scale(self.surf, (WIN_WIDTH, WIN_HEIGHT))
         elif 'Player' in name or 'Enemy' in name:
-            self.surf = pygame.transform.scale(self.surf, (72, 42))
+            self.surf = pygame.transform.scale(self.surf, (90, 54))
         elif 'Player' in name and 'Shot' in name:
             self.surf = pygame.transform.scale(self.surf, (18, 8))
         elif 'Enemy' in name and 'Shot' in name:
