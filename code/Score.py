@@ -47,13 +47,15 @@ class Score:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                # Adição de código que só pemite que o jogador confirme o nome quando ele tiver 4 letras
                 elif event.type == KEYDOWN:
-                    if event.key == K_RETURN and len(name) == 4:
-                        self.confirm_sound.play()
-                        pygame.time.delay(150)
-                        db_proxy.save({'name': name, 'score': score, 'date': get_formatted_date()})
-                        self.show()
-                        return
+                    if event.key == K_RETURN:
+                        if len(name) == 4:
+                            self.confirm_sound.play()
+                            pygame.time.delay(150)
+                            db_proxy.save({'name': name, 'score': score, 'date': get_formatted_date()})
+                            self.show()
+                            return
                     elif event.key == K_BACKSPACE:
                         name = name[:-1]
                         self.typing_sound.play()
