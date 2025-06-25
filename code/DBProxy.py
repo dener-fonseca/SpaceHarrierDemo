@@ -1,4 +1,4 @@
-# Banco de Dados do projeto que armazena a pontuação dos jogadores
+# Banco de Dados do projeto que armazena a pontuação dos jogadores após o fim do jogo
 
 import sqlite3
 

@@ -1,4 +1,4 @@
-# # Módulo que gerencia os tiros disparados pelo player
+# Módulo que gerencia os tiros disparados pelo jogador
 
 from code.Const import ENTITY_SPEED
 from code.Entity import Entity

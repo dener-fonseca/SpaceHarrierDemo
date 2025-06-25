@@ -1,4 +1,4 @@
-#  Módulo que define o player com seus comportamentos como se mover e atirar
+#  Módulo que define o jogador com seus comportamentos como se mover e atirar
 
 import pygame.key
 

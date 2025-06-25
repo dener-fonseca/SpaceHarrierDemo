@@ -1,4 +1,4 @@
-#  Módulo que gerencia as interações entre os objetos do jogo como as colisões
+#  Módulo que gerencia as interações entre os objetos do jogo como os três tipos de colisões
 
 from code.Const import WIN_WIDTH
 from code.Enemy import Enemy

@@ -1,4 +1,4 @@
-# Módulo que gerencia os tiros disparados pelos inimigos
+# Módulo que gerencia os tiros disparados pelos 3 inimigos
 
 from code.Const import ENTITY_SPEED
 from code.Entity import Entity

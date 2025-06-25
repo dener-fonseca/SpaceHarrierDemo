@@ -1,6 +1,6 @@
-# Módulo que define os inimigos com seus comportamentos de se mover e atirar automaticamente
+# Módulo que define o comportamento dos 3 inimigos de se mover e atirar automaticamente
 
-from code.Const import ENTITY_SPEED, ENTITY_SHOT_DELAY
+from code.Const import (ENTITY_SPEED, ENTITY_SHOT_DELAY)
 from code.EnemyShot import EnemyShot
 from code.Entity import Entity
 

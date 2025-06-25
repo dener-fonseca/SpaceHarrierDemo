@@ -1,10 +1,10 @@
-# Módulo que cria entidades com sua configuração
+# Módulo que cria entidades com suas configurações iniciais
 
 import random
 from code.Background import Background
 from code.Enemy import Enemy
 from code.Player import Player
-from code.Const import WIN_WIDTH, WIN_HEIGHT
+from code.Const import (WIN_WIDTH, WIN_HEIGHT)
 
 
 class EntityFactory:

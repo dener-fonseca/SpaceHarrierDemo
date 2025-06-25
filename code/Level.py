@@ -1,4 +1,4 @@
-# Módulo que define a estrutura das fases com carregamento de inimigos e background
+# Módulo que define a estrutura das 3 fases com carregamento de inimigos e background
 
 import random
 import sys

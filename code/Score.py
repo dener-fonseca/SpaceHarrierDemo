@@ -1,10 +1,10 @@
-# Módulo que cria o Score com seus atributos e comportamentos como ter a tela de pontuação, mostrar se o jogador ganhou e pedir que escreva seu nome
+# Módulo que cria a tela de pontuação com seus atributos e comportamentos como mostrar mensagem que o jogador ganhou, pedir que ele escreva seu nome e salvar a pontuação no banco de dados
 
 import sys
 import pygame
 from datetime import datetime
 from pygame.font import Font
-from pygame import Surface, Rect, KEYDOWN, K_RETURN, K_BACKSPACE, K_ESCAPE
+from pygame import (Surface, Rect, KEYDOWN, K_RETURN, K_BACKSPACE, K_ESCAPE)
 from code.Const import (COLOR_YELLOW, SCORE_POS, MENU_OPTION, COLOR_WHITE, WIN_WIDTH, WIN_HEIGHT)
 from code.DBProxy import DBProxy
 

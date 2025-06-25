@@ -21,7 +21,7 @@ class Menu:
         pygame.mixer_music.set_volume(0.5)
         pygame.mixer_music.play(-1)
         while True:
-            # Código que desenha as imagens
+            # Código que desenha a janela do menu
             self.window.blit(source=self.surf, dest=self.rect)
             #Código que escreve o nome do jogo na tela
             self.menu_text(50, "SPACE HARRIER", COLOR_BLUE, ((WIN_WIDTH / 2), 70))

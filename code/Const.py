@@ -1,4 +1,4 @@
-# Módulo que contém todas as constantes que serão usadas no projeto
+# Módulo que contém todas as constantes que serão usadas no projeto prático
 
 import pygame
 
