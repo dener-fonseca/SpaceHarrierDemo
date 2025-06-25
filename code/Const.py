@@ -204,9 +204,9 @@ TIMEOUT_LEVEL = 60000
 
 # WIN_WIDTH e WIN_HEIGHT são constantes que determinam altura e largura da tela e precisam vir antes de SCORE_POS
 
-WIN_WIDTH = 600
+WIN_WIDTH = 1024
 
-WIN_HEIGHT = 400
+WIN_HEIGHT = 768
 
 # SCORE_POS é o posicionamento das informações na tela de pontuação
 
