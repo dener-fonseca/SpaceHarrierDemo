@@ -40,7 +40,7 @@ class EntityMediator:
         elif isinstance(ent1, Player) and isinstance(ent2, Enemy):
             valid_interaction = True
         elif isinstance(ent1, Enemy) and isinstance(ent2, Player):
-    valid_interaction = True
+            valid_interaction = True
 
         if valid_interaction:
             if (ent1.rect.right >= ent2.rect.left and
