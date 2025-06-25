@@ -1,72 +1,60 @@
-# Módulo que gerencia a tela de menu inicial do jogo
+# Módulo que cria o menu com seus atributos e comportamentos como o título do jogo e o menu de opções
 
 import pygame.image
-import sys
-from code.Const import (COLOR_BLUE, COLOR_GREY, COLOR_WHITE, MENU_OPTION)
-from pygame.font import Font
 from pygame import Surface, Rect
+from pygame.font import Font
+from code.Const import (WIN_WIDTH, COLOR_BLUE, COLOR_RED, MENU_OPTION, COLOR_WHITE, COLOR_GREY)
 
 
 class Menu:
-    def __init__(self, window, sounds):
+    def __init__(self, window):
         self.window = window
-        self.sounds = sounds
-        self.surf = pygame.image.load('./assets/MenuBg.png').convert_alpha()
-        # Redimensiona o fundo para cobrir toda a tela
-        self.surf = pygame.transform.scale(self.surf, self.window.get_size())
+        self.surf = pygame.image.load('./assets/MenuBackground.png').convert_alpha()
+        self.surf = pygame.transform.scale(self.surf, (WIN_WIDTH, WIN_HEIGHT))
         self.rect = self.surf.get_rect(left=0, top=0)
-        # Pega largura e altura reais da janela
-        self.win_width, self.win_height = self.window.get_size()
+        self.move_sound = pygame.mixer.Sound('./assets/MoveOption.mp3')
+        self.enter_sound = pygame.mixer.Sound('./assets/EnterOption.mp3')
 
     def run(self):
         menu_option = 0
-        try:
-            pygame.mixer.music.load('./assets/Menu.mp3')
-            pygame.mixer.music.play(-1)
-        except pygame.error:
-            pass  # O programa não para se o arquivo de som não for encontrado
-
-        clock = pygame.time.Clock()
-
+        pygame.mixer_music.load('./assets/MenuSound.mp3')
+        pygame.mixer_music.set_volume(0.5)
+        pygame.mixer_music.play(-1)
         while True:
-            clock.tick(60)
-
+            # Código que desenha as imagens
             self.window.blit(source=self.surf, dest=self.rect)
+            #Código que escreve o nome do jogo na tela
+            self.menu_text(50, "SPACE HARRIER", COLOR_BLUE, ((WIN_WIDTH / 2), 70))
+            self.menu_text(40, "DEMO", COLOR_RED, ((WIN_WIDTH / 2), 120))
 
-            # Criação do título do jogo
-            self.menu_text(50, "SPACE HARRIER", COLOR_BLUE, (self.win_width / 2, 70))
-            self.menu_text(50, "Demo", COLOR_GREY, (self.win_width / 2, 120))
-
-            # Criação das opções do menu
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_text(20, MENU_OPTION[i], COLOR_GREY, (self.win_width / 2, 200 + 25 * i))
+                    self.menu_text(25, MENU_OPTION[i], COLOR_GREY, ((WIN_WIDTH / 2), 200 + 25 * i))
                 else:
-                    self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, (self.win_width / 2, 200 + 25 * i))
-
+                    self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
             pygame.display.flip()
 
-            # Criação dos eventos do teclado
+            # Código que checa os eventos do programa
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-
+                    pygame.quit()  # Fecha a janela
+                    quit()  # Fecha o pygame
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_DOWN:
-                        self.sounds['move_option'].play()
+                    if event.key == pygame.K_DOWN:  # Tecla DOWN
+                        self.move_sound.play()
                         if menu_option < len(MENU_OPTION) - 1:
                             menu_option += 1
                         else:
                             menu_option = 0
-                    if event.key == pygame.K_UP:
-                        self.sounds['move_option'].play()
+                    if event.key == pygame.K_UP:  # Tecla UP
+                        self.move_sound.play()
                         if menu_option > 0:
                             menu_option -= 1
                         else:
                             menu_option = len(MENU_OPTION) - 1
-                    if event.key == pygame.K_RETURN:
-                        self.sounds['enter_option'].play()
+                    if event.key == pygame.K_RETURN:  # Tecla ENTER
+                        self.enter_sound.play()
+                        pygame.time.delay(150)
                         return MENU_OPTION[menu_option]
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):

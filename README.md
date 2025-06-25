@@ -15,7 +15,7 @@ Esta demo é inspirada no projeto Mountain Shooter, do professor Vinicius Borin,
 
 O jogador deve sobreviver por 1 minuto em cada fase para avançar.
 
-É necessário desviar de inimigos e seus disparos para evitar dano.
+É necessário desviar de inimigos que dão Hit Kill e seus disparos para evitar dano.
 
 O jogador pode atirar para eliminar inimigos e ganhar pontos.
 
@@ -58,14 +58,14 @@ Sprites dos jogadores, inimigos, projéteis, explosões
 
 Fundos dos níveis com efeito parallax
 
-Imagens para o menu principal, pontuação, tela de transição de níveis e game over
+Imagens para o menu principal, fases e telas de pontuação
 
 
 Áudio e Música
 
 Pixabay.com:
 
-Trilha sonora para o menu, fases, telas de transição e pontuação
+Trilha sonora para o menu, fases e telas de pontuação
 
 Efeitos sonoros de:
 

@@ -1,17 +1,14 @@
 # Módulo que controla elementos de fundo do jogo
 
-from code.Const import ENTITY_SPEED
+from code.Const import WIN_WIDTH, ENTITY_SPEED
 from code.Entity import Entity
 
 
 class Background(Entity):
-    # Método construtor que inicializa com nome e a posição do background
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
-    
-    # Método que faz o background se mover automáticamente
+
     def move(self):
         self.rect.centerx -= ENTITY_SPEED[self.name]
         if self.rect.right <= 0:
-            # Reposiciona o background para a direita da tela para continuar o loop
-            self.rect.left = self.rect.width
+            self.rect.left = WIN_WIDTH

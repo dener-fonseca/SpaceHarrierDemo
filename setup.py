@@ -6,6 +6,7 @@
 
 from cx_Freeze import setup, Executable
 
+
 # Dependências adicionais e importantes do pygame como o asset
 build_exe_options = {
     "packages": ["pygame"],

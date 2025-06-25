@@ -1,111 +1,61 @@
 # Módulo que define a estrutura das fases com carregamento de inimigos e background
 
-import pygame
 import random
 import sys
+import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Const import (COLOR_CYAN, COLOR_GREEN, COLOR_WHITE, EVENT_ENEMY, EVENT_TIMEOUT, MENU_OPTION, SPAWN_TIME, TIMEOUT_LEVEL, TIMEOUT_STEP, WIN_HEIGHT, WIN_WIDTH)
+from code.Const import (COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, COLOR_YELLOW, COLOR_PURPLE, EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL)
 from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
 from code.Player import Player
-from code.Explosion import Explosion
 
 
 class Level:
-    def __init__(self, window: Surface, name: str, game_mode: str, player_score: list[int], sounds):
+    def __init__(self, window: Surface, name: str, game_mode: str, player_score: list[int]):
         self.timeout = TIMEOUT_LEVEL
         self.window = window
         self.name = name
         self.game_mode = game_mode
-        self.sounds = sounds
         self.entity_list: list[Entity] = []
-        bg_entities = EntityFactory.get_entity(self.name + 'Bg')
-        if isinstance(bg_entities, list):
-            self.entity_list.extend(bg_entities)
-        elif bg_entities is not None:
-            self.entity_list.append(bg_entities)
+        self.entity_list.extend(EntityFactory.get_entity(self.name + 'Bg'))
         player = EntityFactory.get_entity('Player1')
-        if isinstance(player, Player):
-            player.score = player_score[0]
-            self.entity_list.append(player)
+        player.score = player_score[0]
+        self.entity_list.append(player)
         if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
             player = EntityFactory.get_entity('Player2')
-            if isinstance(player, Player):
-                player.score = player_score[1]
-                self.entity_list.append(player)
+            player.score = player_score[1]
+            self.entity_list.append(player)
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
     def run(self, player_score: list[int]):
-        pygame.mixer.music.load(f'./assets/{self.name}.mp3')
-        pygame.mixer.music.set_volume(0.3)
-        pygame.mixer.music.play(-1)
+        pygame.mixer_music.load(f'./assets/{self.name}.mp3')
+        pygame.mixer_music.set_volume(0.5)
+        pygame.mixer_music.play(-1)
         clock = pygame.time.Clock()
-
-        padding_left = 10
-        top_margin = 5
-        line_height = 20
-
         while True:
             clock.tick(60)
-            
-            # Separar entidades por tipo para renderização em camadas
-            backgrounds = []
-            players = []
-            enemies = []
-            shots = []
-            explosions = []
-            
             for ent in self.entity_list:
-                if 'Bg' in ent.name:
-                    backgrounds.append(ent)
-                elif isinstance(ent, Player):
-                    players.append(ent)
-                elif isinstance(ent, Enemy):
-                    enemies.append(ent)
-                elif 'Shot' in ent.name:
-                    shots.append(ent)
-                elif isinstance(ent, Explosion):
-                    explosions.append(ent)
-            
-            # Renderizar em ordem: background -> enemies -> shots -> players -> explosions
-            all_entities_ordered = backgrounds + enemies + shots + players + explosions
-            
-            for ent in all_entities_ordered:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
-
-                # Atualiza explosões para que desapareçam após o tempo
-                if isinstance(ent, Explosion):
-                    ent.update()
-
                 if isinstance(ent, (Player, Enemy)):
                     shoot = ent.shoot()
                     if shoot is not None:
                         self.entity_list.append(shoot)
-
                 if ent.name == 'Player1':
-                    self.level_text(14, f'Player1 - Health: {ent.health} | Score: {ent.score}', COLOR_GREEN, (padding_left, top_margin + line_height * 2))
-
+                    self.level_text(12, f'Jogador 1 - Health: {ent.health} | Pontuação: {ent.score}', COLOR_PURPLE, (10, 25))
                 if ent.name == 'Player2':
-                    self.level_text(14, f'Player2 - Health: {ent.health} | Score: {ent.score}', COLOR_CYAN, (padding_left, top_margin + line_height * 3))
-
+                    self.level_text(12, f'Jogador 2 - Health: {ent.health} | Pontuação: {ent.score}', COLOR_YELLOW, (10, 45))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-
                 if event.type == EVENT_ENEMY:
-                    choice = random.choice(('Enemy1', 'Enemy2'))
-                    entity = EntityFactory.get_entity(choice)
-                    if isinstance(entity, list):
-                        self.entity_list.extend(entity)
-                    elif entity is not None:
-                        self.entity_list.append(entity)
-
+                    choice = random.choice(('Enemy1', 'Enemy2', 'Enemy3'))
+                    self.entity_list.append(EntityFactory.get_entity(choice))
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP
                     if self.timeout == 0:
@@ -116,33 +66,25 @@ class Level:
                                 player_score[1] = ent.score
                         return True
 
-            # Código que checa se ainda existe jogador deve estar FORA do for ent
-            found_player = any(isinstance(ent, Player) for ent in self.entity_list)
-            if not found_player:
-                return False
+                found_player = False
+                for ent in self.entity_list:
+                    if isinstance(ent, Player):
+                        found_player = True
 
-            # Informações na tela contendo o nome do nivel, tempo e fps
-            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', COLOR_WHITE, (padding_left, top_margin + line_height))
-            self.level_text(14, f'fps: {clock.get_fps():.0f}', COLOR_WHITE, (padding_left, WIN_HEIGHT - 35))
-            self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE, (padding_left, WIN_HEIGHT - 20))
+                if not found_player:
+                    return False
+
+            # Texto com informações técnicas
+            self.level_text(12, f'{self.name} - Tempo para concluir a fase: {self.timeout / 1000:.1f}s', COLOR_WHITE, (10, 5))
+            self.level_text(12, f'Fps: {clock.get_fps():.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 35))
+            self.level_text(12, f'Entidades: {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
+            # Tratamento de Colisões
+            EntityMediator.verify_collision(entity_list=self.entity_list)
+            EntityMediator.verify_health(entity_list=self.entity_list)
 
-            # Verificações de colisão e vida
-            EntityMediator.verify_collision(entity_list=self.entity_list, sounds=self.sounds)
-            EntityMediator.verify_health(entity_list=self.entity_list, sounds=self.sounds)
-
-    def level_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
-        try:
-            font = pygame.font.SysFont(name="Arial", size=text_size)
-            text_surface = font.render(text, True, text_color)
-            text_rect = text_surface.get_rect(topleft=text_center_pos)
-
-            # Garante que o texto não saia da tela
-            if text_rect.right > WIN_WIDTH:
-                text_rect.right = WIN_WIDTH - 5
-            if text_rect.bottom > WIN_HEIGHT:
-                text_rect.bottom = WIN_HEIGHT - 5
-
-            self.window.blit(source=text_surface, dest=text_rect)
-        except pygame.error as e:
-            print(f"Erro ao renderizar texto: {e}")
+    def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
+        text_font: Font = pygame.font.SysFont(name="DM Serif Display", size=text_size)
+        text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
+        text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
+        self.window.blit(source=text_surf, dest=text_rect)
