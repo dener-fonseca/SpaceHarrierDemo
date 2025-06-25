@@ -13,9 +13,9 @@ Esta demo é inspirada no projeto Mountain Shooter, do professor Vinicius Borin,
 
 ✅ Mecânicas:
 
-O jogador deve sobreviver por 1 minuto em cada fase para avançar.
+O jogador deve sobreviver por 1 minuto em 3 fases para completar a demo.
 
-É necessário desviar de inimigos que dão Hit Kill e seus disparos para evitar dano.
+É necessário desviar dos inimigos que dão Hit Kill e seus disparos para evitar dano.
 
 O jogador pode atirar para eliminar inimigos e ganhar pontos.
 
@@ -54,9 +54,9 @@ Imagens e Sprites
 
 CraftPix.net:
 
-Sprites dos jogadores, inimigos, projéteis, explosões
+Sprites dos jogadores, inimigos e tiros
 
-Fundos dos níveis com efeito parallax
+Fundos das fases com efeito parallax
 
 Imagens para o menu principal, fases e telas de pontuação
 
@@ -69,13 +69,9 @@ Trilha sonora para o menu, fases e telas de pontuação
 
 Efeitos sonoros de:
 
-Disparo
+Disparos dos jogadores
 
-Dano
-
-Explosões
-
-Navegação e confirmação no menu
+Navegação e confirmação no menu inicial e na tela de pontuação
 
 
 ---
