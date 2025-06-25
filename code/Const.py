@@ -9,6 +9,7 @@ COLOR_RED = (255,0, 0)
 COLOR_GREY = (128, 128, 128)
 COLOR_WHITE = (255, 255, 255)
 COLOR_YELLOW = (255, 255, 0)
+COLOR_PURPLE = (128, 0, 128)
 
 # Evento para criar inimigos
 
