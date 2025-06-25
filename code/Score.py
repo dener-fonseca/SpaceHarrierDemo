@@ -18,7 +18,8 @@ class Score:
         self.typing_sound = pygame.mixer.Sound('./assets/MoveOption.mp3')
         self.confirm_sound = pygame.mixer.Sound('./assets/EnterOption.mp3')
         pass
-
+        
+    # Função que salva a pontuação do jogador no banco de dados
     def save(self, game_mode: str, player_score: list[int]):
         pygame.mixer_music.load('./assets/ScoreSound.mp3')
         pygame.mixer_music.set_volume(0.5)
@@ -47,6 +48,7 @@ class Score:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                    
                 # Adição de código que só pemite que o jogador confirme o nome quando ele tiver 4 letras
                 elif event.type == KEYDOWN:
                     if event.key == K_RETURN:
@@ -66,7 +68,8 @@ class Score:
             self.score_text(20, name, COLOR_WHITE, SCORE_POS['Name'])
             pygame.display.flip()
             pass
-
+            
+    # Função que mostra a tela de pontuação
     def show(self):
         pygame.mixer_music.load('./assets/ScoreSound.mp3')
         pygame.mixer_music.set_volume(0.5)
@@ -91,14 +94,15 @@ class Score:
                     if event.key == K_ESCAPE:
                         return
             pygame.display.flip()
-
+            
+    # Função que cria o texto da tela de pontuação
     def score_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="DM Serif Display", size=text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
         self.window.blit(source=text_surf, dest=text_rect)
 
-
+# Função que retorna a data e hora formatada
 def get_formatted_date():
     current_datetime = datetime.now()
     current_time = current_datetime.strftime("%H:%M")

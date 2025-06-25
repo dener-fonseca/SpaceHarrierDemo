@@ -9,10 +9,12 @@ class Enemy(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
         self.shot_delay = ENTITY_SHOT_DELAY[self.name]
-
+        
+    # Função que define o comportamento de se mover dos inimigos
     def move(self):
         self.rect.centerx -= ENTITY_SPEED[self.name]
-
+        
+    # Função que define o comportamento de atirar dos inimigos
     def shoot(self):
         self.shot_delay -= 1
         if self.shot_delay == 0:

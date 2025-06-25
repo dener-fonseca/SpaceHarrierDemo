@@ -12,7 +12,8 @@ class Game:
     def __init__(self):
         pygame.init()
         self.window = pygame.display.set_mode(size=(WIN_WIDTH, WIN_HEIGHT))
-
+        
+    # Função que roda o jogo
     def run(self):
         while True:
             score = Score(self.window)

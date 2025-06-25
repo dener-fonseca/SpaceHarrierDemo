@@ -30,7 +30,8 @@ class Level:
             self.entity_list.append(player)
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
-
+        
+    # Função que roda as fases do jogo
     def run(self, player_score: list[int]):
         pygame.mixer_music.load(f'./assets/{self.name}.mp3')
         pygame.mixer_music.set_volume(0.5)
@@ -46,9 +47,9 @@ class Level:
                     if shoot is not None:
                         self.entity_list.append(shoot)
                 if ent.name == 'Player1':
-                    self.level_text(12, f'Jogador 1 - Health: {ent.health} | Pontuação: {ent.score}', COLOR_PURPLE, (10, 25))
+                    self.level_text(12, f'Jogador 1 - Vida: {ent.health} | Pontuação: {ent.score}', COLOR_PURPLE, (10, 25))
                 if ent.name == 'Player2':
-                    self.level_text(12, f'Jogador 2 - Health: {ent.health} | Pontuação: {ent.score}', COLOR_YELLOW, (10, 45))
+                    self.level_text(12, f'Jogador 2 - Vida: {ent.health} | Pontuação: {ent.score}', COLOR_YELLOW, (10, 45))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -82,7 +83,8 @@ class Level:
             # Tratamento de Colisões
             EntityMediator.verify_collision(entity_list=self.entity_list)
             EntityMediator.verify_health(entity_list=self.entity_list)
-
+            
+    # Função que cria o texto das fases
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="DM Serif Display", size=text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()

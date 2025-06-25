@@ -12,7 +12,8 @@ class Player(Entity):
         super().__init__(name, position)
         self.shot_delay = ENTITY_SHOT_DELAY[self.name]
         self.shot_sound = pygame.mixer.Sound('./assets/Shot.mp3')
-
+        
+    # Função que define o comportamento de se mover do jogador
     def move(self):
         pressed_key = pygame.key.get_pressed()
         if pressed_key[PLAYER_KEY_UP[self.name]] and self.rect.top > 0:
@@ -23,8 +24,8 @@ class Player(Entity):
             self.rect.centerx -= ENTITY_SPEED[self.name]
         if pressed_key[PLAYER_KEY_RIGHT[self.name]] and self.rect.right < WIN_WIDTH:
             self.rect.centerx += ENTITY_SPEED[self.name]
-        pass
-
+        
+    # Função que define o comportamento de atirar do jogador
     def shoot(self):
         self.shot_delay -= 1
         if self.shot_delay == 0:

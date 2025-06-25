@@ -14,7 +14,8 @@ class Menu:
         self.rect = self.surf.get_rect(left=0, top=0)
         self.move_sound = pygame.mixer.Sound('./assets/MoveOption.mp3')
         self.enter_sound = pygame.mixer.Sound('./assets/EnterOption.mp3')
-
+        
+    # Função que roda o menu do jogo
     def run(self):
         menu_option = 0
         pygame.mixer_music.load('./assets/MenuSound.mp3')
@@ -56,7 +57,8 @@ class Menu:
                         self.enter_sound.play()
                         pygame.time.delay(150)
                         return MENU_OPTION[menu_option]
-
+                        
+    # Função que cria o texto do menu
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="DM Serif Display", size=text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
