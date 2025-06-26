@@ -42,16 +42,16 @@ ENTITY_SPEED = {
     'Level3Bg2': 2,
     'Level3Bg3': 3,
     'Level3Bg4': 4,
-    'Player1': 3,
-    'Player1Shot': 2,
-    'Player2': 3,
-    'Player2Shot': 2,
-    'Enemy1': 2,
-    'Enemy1Shot': 3,
-    'Enemy2': 2,
-    'Enemy2Shot': 3,
-    'Enemy3': 2,
-    'Enemy3Shot': 3,
+    'Player1': 5,
+    'Player1Shot': 7,
+    'Player2': 5,
+    'Player2Shot': 7,
+    'Enemy1': 4,
+    'Enemy1Shot': 7,
+    'Enemy2': 4,
+    'Enemy2Shot': 7,
+    'Enemy3': 4,
+    'Enemy3Shot': 7,
 }
 
 # Entidade que determina a saúde do jogador e do inimigo
@@ -164,9 +164,9 @@ ENTITY_SCORE = {
 ENTITY_SHOT_DELAY = {
     'Player1': 20,
     'Player2': 20,
-    'Enemy1': 70,
-    'Enemy2': 70,
-    'Enemy3': 70,
+    'Enemy1': 50,
+    'Enemy2': 50,
+    'Enemy3': 50,
 }
 
 # Menu do jogo
@@ -189,6 +189,21 @@ PLAYER_KEY_RIGHT = {'Player1': pygame.K_d,
                     'Player2': pygame.K_RIGHT}
 PLAYER_KEY_SHOOT = {'Player1': pygame.K_LCTRL,
                     'Player2': pygame.K_RCTRL}
+
+# Escala das imagens dos jogadores e inimigos
+
+SCALE_MAP = {
+    'Player1Shot': (25, 9),
+    'Player2Shot': (25, 9),
+    'Enemy1Shot': (25, 25),
+    'Enemy2Shot': (25, 25),
+    'Enemy3Shot': (25, 25),
+    'Player1': (90, 54),
+    'Player2': (90, 54),
+    'Enemy1': (90, 54),
+    'Enemy2': (90, 54),
+    'Enemy3': (90, 54)
+}
 
 # Tempo de spawn dos inimigos
 
