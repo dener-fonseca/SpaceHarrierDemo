@@ -17,6 +17,8 @@ O jogador deve sobreviver por 1 minuto em 3 fases para completar a demo.
 
 É necessário desviar dos inimigos que dão Hit Kill e seus disparos para evitar dano.
 
+No modo multiplayer, se um dos jogadores completar a fase, o jogador que foi derrotado será revivido na próxima fase.
+
 O jogador pode atirar para eliminar inimigos e ganhar pontos.
 
 Ao final da demo ou em caso de morte, a pontuação é salva em um banco de dados.
